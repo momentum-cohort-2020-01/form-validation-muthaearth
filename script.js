@@ -33,9 +33,12 @@ form.addEventListener("input", function (event) {
   // regular expression to match only alphanumeric characters and spaces
   if (nameInput.value != "") {
 
-    var re = /[!@#$%^&*(),.?":{}|<>]/;
-    if (re.test(nameInput.value)) {
+    var re =/^[A-z ]+$/;
+    // /[!@#$%^&*(),.?":{}|<>]/;
+    // /^[\w ]+$/;
+    if (!re.test(nameInput.value)) {
       console.log("Bad characters")
+      nameInput.parentElement.classList.remove("input-valid")
       nameInput.parentElement.classList.add("input-invalid")
 
       let spellingAlert = false
@@ -44,11 +47,21 @@ form.addEventListener("input", function (event) {
           spellingAlert = true
       }
       if (spellingAlert === false) {
-      let text = document.createTextNode("Check spelling")
+      let text = document.createElement("p")
+      text.innerText = "Check spelling"
       nameInput.parentElement.appendChild(text)}
     } else {
       console.log("Valid")
       nameInput.parentElement.classList.add("input-valid")
+
+      let spellingAlert = false
+      for (let child of nameInput.parentElement.childNodes) {
+        if (child.textContent == "Check spelling")
+          spellingAlert = child
+      } 
+      if (spellingAlert) {
+        spellingAlert.remove()
+      }
     }
   }
 })
