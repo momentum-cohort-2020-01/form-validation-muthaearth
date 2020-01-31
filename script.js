@@ -1,44 +1,45 @@
 console.log('Add validation!');
-<script>
 
-let input = document.querySelectorAll('.input-field')
-let anyEntry = document.querySelectorAll("#parking-form")
-let emptyField = document.createElement("p");
-let alert="Error: Field incomplete"
+//let or const = a var
+let inputs = document.querySelectorAll('.entry')
 
-form.addEventListener("submit", function(event){ event.preventDefault(){
+//any id element is unique - must use .querySelector
+let form = document.querySelector("#parking-form")
+console.log(inputs)
 
 //validation fails if any input field is blank
-function emptyField (input) {
-console.log(alert);
+//emptyField takes argument inputs
+form.addEventListener("submit", function (event) {
+  event.preventDefault()
+  for (let input of inputs) {
+    if (input.value === "") {
+      console.log("Empty")
+      input.parentElement.classList.add("input-invalid")
+      let text = document.createTextNode("Entry required")
+      input.parentElement.appendChild(text)
+    } else {
+      console.log("Valid")
+      input.parentElement.classList.add("input-valid")
+    }
+  }
+})
 
-if (input.value === ""){
-console.log(alert)
-emptyField.innerText=alert
-input.parentElement.classList.add("input-invalid")
-} else {
- console.log(input)
-input.parentElement.classList.add(“input-valid”)
-}
-}
+//Check valid characters in name field
+let nameInput = document.querySelector('#name')
+console.log(nameInput)
 
-let nameInput = document.querySelector('#name-field')
-let charAlert="Error: Name contains invalid characters!"
+form.addEventListener("keypress", function (event) {
+  // event.preventDefault()
 
-function charCheck(nameInput) {
-    console.log(charCheck)
-}
-// regular expression to match only alphanumeric characters and spaces
-var re = /^[\w ]+$/;
-nameInput.innerText=charAlert
-emptyField.innerText=charAlert
-
-// validation fails if the input doesn't match our regular expression
-if(!re.test(nameInput.value)) {
-  console.log(charAlert)
-  nameInput.parentElement.classList.add(“input-valid”)
-}
-}}
-
-
-</script>
+  // regular expression to match only alphanumeric characters and spaces
+  var re = /^[\w ]+$/;
+  if (!re.test(nameInput.value)) {
+    console.log("Bad characters")
+    nameInput.parentElement.classList.add("input-invalid")
+    let text = document.createTextNode("Check spelling")
+    nameInput.parentElement.appendChild(text)
+  } else {
+    console.log("Valid")
+    nameInput.parentElement.classList.add("input-valid")
+  }
+})
