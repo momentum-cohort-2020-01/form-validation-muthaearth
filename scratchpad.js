@@ -1,17 +1,25 @@
-// let nameInput = document.querySelector('#name-field')
-// let charAlert="Error: Name contains invalid characters!"
+function alert(nameInput, text) {
+    let alert = false
+    for (let child of nameInput.parentElement.childNodes) {
+        if (child.textContent == text)
+            alert = true
+    }
+    if (alert === false) {
+        let text = document.createElement("p")
+        text.innerText = text
+        nameInput.parentElement.appendChild(text)
+    }
+    else {
+        console.log("Valid")
+        nameInput.parentElement.classList.add("input-valid")
 
-// function charCheck(nameInput) {
-//     console.log(charCheck)
-// }
-// // regular expression to match only alphanumeric characters and spaces
-// var re = /^[\w ]+$/;
-// nameInput.innerText=charAlert
-// emptyField.innerText=charAlert
-
-// // validation fails if the input doesn't match our regular expression
-// if(!re.test(nameInput.value)) {
-//   console.log(charAlert)
-//   nameInput.parentElement.classList.add(“input-valid”)
-// }
-//
+        let alert = false
+        for (let child of nameInput.parentElement.childNodes) {
+            if (child.textContent == text)
+                alert = child
+        }
+        if (alert) {
+            alert.remove()
+        }
+    }
+}
