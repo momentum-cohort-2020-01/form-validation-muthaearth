@@ -28,18 +28,27 @@ form.addEventListener("submit", function (event) {
 let nameInput = document.querySelector('#name')
 console.log(nameInput)
 
-form.addEventListener("keypress", function (event) {
-  // event.preventDefault()
+form.addEventListener("input", function (event) {
 
   // regular expression to match only alphanumeric characters and spaces
-  var re = /^[\w ]+$/;
-  if (!re.test(nameInput.value)) {
-    console.log("Bad characters")
-    nameInput.parentElement.classList.add("input-invalid")
-    let text = document.createTextNode("Check spelling")
-    nameInput.parentElement.appendChild(text)
-  } else {
-    console.log("Valid")
-    nameInput.parentElement.classList.add("input-valid")
+  if (nameInput.value != "") {
+
+    var re = /[!@#$%^&*(),.?":{}|<>]/;
+    if (re.test(nameInput.value)) {
+      console.log("Bad characters")
+      nameInput.parentElement.classList.add("input-invalid")
+
+      let spellingAlert = false
+      for (let child of nameInput.parentElement.childNodes) {
+        if (child.textContent == "Check spelling")
+          spellingAlert = true
+      }
+      if (spellingAlert === false) {
+      let text = document.createTextNode("Check spelling")
+      nameInput.parentElement.appendChild(text)}
+    } else {
+      console.log("Valid")
+      nameInput.parentElement.classList.add("input-valid")
+    }
   }
 })
