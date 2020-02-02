@@ -79,9 +79,9 @@ form.addEventListener("input", function (event) {
     var re = /^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/;
 
     //date > 1900 and date !> current year
-    let dateInput = document.querySelector("#car-year")
-    let dateInputValue = new Date(dateInput.value)
-    yrInput = dateInputValue.getFullYear()
+    let yearRange = document.querySelector("#car-year")
+    let yearRangeValue = new Date(yearRange.value)
+    yrInput = yearRangeValue.getFullYear()
     yrCurrent = new Date().getFullYear()
 
     if (!re.test(yearInput.value) || !(Number(yrInput) > 1900 && Number(yrInput) <= Number(yrCurrent))) {
@@ -114,3 +114,4 @@ form.addEventListener("input", function (event) {
     }
   }
 })
+
