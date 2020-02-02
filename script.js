@@ -78,7 +78,7 @@ form.addEventListener("input", function (event) {
 
     var re = /^(\(?\+?[0-9]*\)?)?[0-9_\- \(\)]*$/;
 
-    //get date > 1900 and == current year
+    //date > 1900 and date !> current year
     let dateInput = document.querySelector("#car-year")
     let dateInputValue = new Date(dateInput.value)
     yrInput = dateInputValue.getFullYear()
