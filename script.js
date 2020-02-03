@@ -140,8 +140,7 @@ function ccFormat(value) {
             }
         }
         ccDigits += intValue;
-        
-    // } console.log("ccDigits" + ccDigits)
+    }
     return (ccDigits % 10) == 0;
 }
 
