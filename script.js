@@ -140,7 +140,8 @@ function ccFormat(value) {
             }
         }
         ccDigits += intValue;
-    }
+        
+    // } console.log("ccDigits" + ccDigits)
     return (ccDigits % 10) == 0;
 }
 
@@ -217,7 +218,7 @@ function markFull(input) {
 //this function restricts regular expression
 //of name value to alphabetical digits
 function nameCheck() {
-    let re = /^[[\w+\s]|-|\.]+$/;
+    let re = /^[A-z ]+$/;
     let input = getInputByID("#name");
 
     if (isEmpty(input)) {
