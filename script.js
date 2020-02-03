@@ -127,19 +127,19 @@ function ccEntry(number) {
 }
 
 //this function evals that length of credit card value equals 16 digits
-function ccFormat(val) {
+function ccFormat(value) {
     var ccDigits = 0;
-    for (var i = 0; i < val.length; i++) {
-        var intVal = parseInt(val.substr(i, 1));
+    for (var i = 0; i < value.length; i++) {
+        var intValue = parseInt(value.substr(i, 1));
 
         if (i % 2 == 0) {
-            intVal *= 2;
+            intValue *= 2;
 
-            if (intVal > 9) {
-                intVal = 1 + (intVal % 10);
+            if (intValue > 9) {
+                intValue = 1 + (intValue % 10);
             }
         }
-        ccDigits += intVal;
+        ccDigits += intValue;
     }
     return (ccDigits % 10) == 0;
 }
